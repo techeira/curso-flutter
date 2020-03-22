@@ -4,7 +4,7 @@ void main(){
   runApp(
     MaterialApp(
       title: "Frases do dia",
-      home: Column(
+      home: Row(
         children: <Widget>[
           Text("t1:"),
           Text("t2:"),
