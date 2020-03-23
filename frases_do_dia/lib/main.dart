@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 void main(){
   runApp(
     MaterialApp(
@@ -17,21 +19,10 @@ void main(){
             width: 1,
           )
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Text(
-              "T1"
-            ),
-            Text(
-              "T2"
-            ),
-            Text(
-              "T3"
-            ),
-          ],
-        ),
+        child: Image.asset(
+          "images/mesa.jpg",
+          fit: BoxFit.contain,
+        )
       )
     )
   );
