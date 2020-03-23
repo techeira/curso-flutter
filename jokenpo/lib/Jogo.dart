@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Jogo extends StatefulWidget {
   @override
@@ -7,8 +8,40 @@ class Jogo extends StatefulWidget {
 
 class _JogoState extends State<Jogo> {
 
-  String _resultado = "";
+  String _resultado = "Faça sua escolha";
   String _imgPadrao = "images/padrao.png";
+
+  var _imagens = [
+    "images/pedra.png",
+    "images/papel.png",
+    "images/tesoura.png",
+  ];
+
+  void _selecionarImagem(index){
+
+    int randNum = new Random().nextInt(3);
+    String result = "";
+
+    if (randNum==index) {
+      result = "empate";
+    } else {
+      if(
+        ( randNum == 0 && index == 1 ) ||
+        ( randNum == 1 && index == 2 ) ||
+        ( randNum == 2 && index == 0 )
+      ) {
+        result = "você venceu";
+      } else {
+        result = "você perdeu";
+      }
+    }
+
+    setState(() {
+      this._imgPadrao = _imagens[randNum];
+      this._resultado = result;
+    });
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +86,32 @@ class _JogoState extends State<Jogo> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Image.asset(
-                "images/pedra.png",
-                height: 100,
+              GestureDetector(
+                onTap: (){
+                  _selecionarImagem(0);
+                },
+                child: Image.asset(
+                  "images/pedra.png",
+                  height: 100,
+                ),
               ),
-              Image.asset(
-                "images/papel.png",
-                height: 100,
+              GestureDetector(
+                onTap: (){
+                  _selecionarImagem(1);
+                },
+                child: Image.asset(
+                  "images/papel.png",
+                  height: 100,
+                ),
               ),
-              Image.asset(
-                "images/tesoura.png",
-                height: 100,
+              GestureDetector(
+                onTap: (){
+                  _selecionarImagem(2);
+                },
+                child: Image.asset(
+                  "images/tesoura.png",
+                  height: 100,
+                ),
               ),
             ],
           )
