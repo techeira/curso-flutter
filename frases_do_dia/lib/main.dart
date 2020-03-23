@@ -6,18 +6,8 @@ void main(){
       //debugShowCheckedModeBanner: false, //remove a "bandeira de debug"
       title: "Frases do dia",
       home: Container(
-				//color: Colors.black,
-        padding: EdgeInsets.fromLTRB(
-          0,
-          30,
-          0,
-          30,
-        ),
-        margin: EdgeInsets.fromLTRB(
-          10,
-          30,
-          10,
-          30
+        margin: EdgeInsets.only(
+          top: 40,
         ),
         decoration: BoxDecoration(
           //color: Colors.white,
@@ -27,26 +17,19 @@ void main(){
             width: 1,
           )
         ),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Text(
-              "t1",
-            ),
-            Padding(
-              padding: EdgeInsets.all(30),
-              child: Text(
-                "t2"
-              )
+              "T1"
             ),
             Text(
-              "t3",
-            )
-            /*
+              "T2"
+            ),
             Text(
-              "Imagine aqui um texto bonito que vou usar apenas para testar",
-              textAlign: TextAlign.justify,
-            )
-            */
+              "T3"
+            ),
           ],
         ),
       )
