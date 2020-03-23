@@ -8,21 +8,19 @@ void main(){
 				color: Colors.white,
         child: Column(
           children: <Widget>[
-            Text(
-							//"aí vai um textão só pra testar a quantidade de caracteres",
-              "teste teste",
-							style: TextStyle(
-								fontSize: 40,
-                fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.normal,
-								color: Colors.black,
-                letterSpacing: 0,
-                wordSpacing: 0,
-                decoration: TextDecoration.none,
-                decorationColor: Colors.black,
-                decorationStyle: TextDecorationStyle.solid
-							),
-						),
+            FlatButton(
+              onPressed: (){
+                print("Botão pressionado");
+              },
+              child: Text(
+                "Botão",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  decoration: TextDecoration.none
+                ),
+              ),
+            )
           ],
         ),
       )
