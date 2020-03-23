@@ -1,104 +1,83 @@
 import 'package:flutter/material.dart';
-
-/*
-Stateless -> Widgets que não podem ser alterados
-Stateful -> Widgets que podem ser alterados
-*/
+import 'dart:math';
 
 void main(){
   runApp(
     MaterialApp(
-      debugShowCheckedModeBanner: false, //remove a "bandeira de debug"
-      home: HomeStateful(),
-      //home: Home(),
+      home: Home(),
     )
   );
 }
 
-class HomeStateful extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _HomeStatefulState createState() => _HomeStatefulState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomeStatefulState extends State<HomeStateful> {
+class _HomeState extends State<Home> {
 
-  var _titulo = "Frases do dia";
-  var _nome = "Fulano";
+  var _frase = "Clique abaixo para gerar uma frase";
+  var _frases = [
+    "Frase 0",
+    "Frase 1",
+    "Frase 2",
+    "Frase 3",
+    "Frase 4",
+    "Frase 5",
+  ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_titulo),
-        backgroundColor: Color(0xFF656565),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.blue,
-            style: BorderStyle.solid
-          ),
-        ),
-        child: Column(
-          children: <Widget>[
-            RaisedButton(
-              onPressed: (){
-                setState(() {
-                  _nome="Ciclano";
-                });
-              },
-              child: Text(
-                "Clique aqui"
-              ),
-            ),
-            Text("nome: $_nome")
-          ]
-        ),
-      ),
-    );
+  void _trocarFrase(){
+
+    var index = Random().nextInt(_frases.length);
+
+    setState(() {
+      _frase = _frases[index];                    
+    });
+
   }
-}
-
-class Home extends StatelessWidget {
-
-  var _titulo = "Frases do dia";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_titulo),
-        backgroundColor: Color(0xFF656565),
+        title: Text("Frases do Dia"),
+        backgroundColor: Colors.green,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.blue,
-            style: BorderStyle.solid
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            "body",
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Color(0xFFC6C6C6),
+      body: Center(
         child: Container(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Text("texto 1"),
-                Text("texto 2"),
-              ],
-            )
-          ),
+          //width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Image.asset("images/logo.png"),
+              Text(
+                _frase,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontSize: 17,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black,
+                ),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  _trocarFrase();
+                },
+                color: Colors.green,
+                child: Text(
+                  "Nova frase",
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )
+            ],
+          )
         ),
-      ),
+      )
     );
   }
 }
