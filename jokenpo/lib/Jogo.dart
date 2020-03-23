@@ -9,7 +9,7 @@ class Jogo extends StatefulWidget {
 class _JogoState extends State<Jogo> {
 
   String _resultado = "Faça sua escolha";
-  String _imgPadrao = "images/padrao.png";
+  AssetImage _imgPadrao = AssetImage("images/padrao.png");
 
   var _imagens = [
     "images/pedra.png",
@@ -37,7 +37,7 @@ class _JogoState extends State<Jogo> {
     }
 
     setState(() {
-      this._imgPadrao = _imagens[randNum];
+      this._imgPadrao = AssetImage(_imagens[randNum]);;
       this._resultado = result;
     });
     
@@ -68,7 +68,7 @@ class _JogoState extends State<Jogo> {
               ),
             ),
           ),
-          Image.asset(_imgPadrao),
+          Image(image: _imgPadrao),
           Padding(
             padding: EdgeInsets.only(
               top: 32,
