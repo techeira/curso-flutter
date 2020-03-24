@@ -37,7 +37,7 @@ class _JogoState extends State<Jogo> {
     }
 
     setState(() {
-      this._imgPadrao = AssetImage(_imagens[randNum]);;
+      this._imgPadrao = AssetImage(_imagens[randNum]);
       this._resultado = result;
     });
     
